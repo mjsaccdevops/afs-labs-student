@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: db-deployment
   namespace: schwartz
   labels:
-    app: app
+    app: db
 spec:
   replicas: 1
   strategy:
@@ -12,17 +12,17 @@ spec:
   minReadySeconds: 20
   selector:
     matchLabels:
-      app: app
+      app: db
   template:
     metadata:
       labels:
-        app: app
+        app: db
     spec:
       containers:
       - envFrom:
         - secretRef:
             name: db-secret
-        name: app-deployment
-        image: harbor.dev.afsmtddso.com/schwartz-harbor-project/app:971c881-d4f12c1
+        name: db-deployment
+        image: harbor.dev.afsmtddso.com/schwartz-harbor-project/db@sha256:da2f586da415e63b3c0c1eada4e40cd15a0e272a3224b11a6bc9f586b57eca00
         ports:
-        - containerPort: 5000
+        - containerPort: 5432
