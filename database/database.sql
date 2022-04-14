@@ -1,3 +1,4 @@
+-- This is a comment to test the automatic build when changes are made to database.sql
 --
 -- PostgreSQL database dump
 --
